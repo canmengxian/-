@@ -1,0 +1,21 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: download
+        run: |
+          git clone https://github.com/openwrt/openwrt.git
+          
+          
+      - name: Upload bin directory
+        uses: actions/upload-artifact@m
+        with:
+         name: OpenWrt${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+         path: openwrt
