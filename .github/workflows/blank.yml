@@ -11,6 +11,8 @@ jobs:
 
       - name: download
         run: |
+          git config --global user.name "残梦"
+          git config --global user.email canmengxian@qq.com
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git clone https://github.com/xiaorouji/openwrt-passwall.git
           git pull
