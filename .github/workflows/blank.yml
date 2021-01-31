@@ -13,7 +13,7 @@ jobs:
         run: |
           git config --global user.name "残梦"
           git config --global user.email canmengxian@qq.com
-          git commit -m "download youtube video"
+          git clone https://github.com/xiaorouji/openwrt-passwall.git
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
           git add .
