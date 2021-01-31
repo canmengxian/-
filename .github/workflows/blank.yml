@@ -11,11 +11,10 @@ jobs:
 
       - name: download
         run: |
-          git clone https://github.com/openwrt/openwrt.git
+          git clone https://github.com/xiaorouji/openwrt-passwall.git
           
-          
-      - name: Upload bin directory
+      - name: 上传
         uses: actions/upload-artifact@main
         with:
-         name: OpenWrt${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+         name: OpenWrt${{ env.DEVICE_NAME }}
          path: openwrt
