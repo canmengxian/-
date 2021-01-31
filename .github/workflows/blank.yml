@@ -12,9 +12,7 @@ jobs:
       - name: download
         run: |
           git clone https://github.com/xiaorouji/openwrt-passwall.git
-          
-      - name: 上传
-        uses: actions/upload-artifact@main
-        with:
-         name: OpenWrt${{ env.DEVICE_NAME }}
-         path: openwrt-passwall
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git pull
+          git add .
+          git push
