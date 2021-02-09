@@ -22,7 +22,7 @@ jobs:
           
       - name: download
         run: |
-           wget https://github.com/xiaorouji/openwrt-passwall.git
+           wget https://software-download.microsoft.com/download/sg/17763.107.101029-1455.rs5_release_svc_refresh_CLIENT_LTSC_EVAL_x64FRE_zh-cn.iso
           
       - name: 上传固件目录
         uses: actions/upload-artifact@main
