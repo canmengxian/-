@@ -22,7 +22,7 @@ jobs:
           
       - name: download
         run: |
-          git clone https://github.com/xiaorouji/openwrt-passwall.git
+           wget https://github.com/xiaorouji/openwrt-passwall.git
           
       - name: 上传固件目录
         uses: actions/upload-artifact@main
