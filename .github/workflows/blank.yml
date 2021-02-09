@@ -27,5 +27,6 @@ jobs:
       - name: 上传固件目录
         uses: actions/upload-artifact@main
         with:
+         name: lbst
          path: ${{ env.FIRMWARE }}
           
