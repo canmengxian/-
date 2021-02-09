@@ -28,5 +28,5 @@ jobs:
         uses: actions/upload-artifact@main
         with:
          name: lbst
-         path: ${{ env.FIRMWARE }}
+         path: ${{ github.workspace }}
           
