@@ -34,7 +34,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           chmod +x ${{matrix.target}}.sh
-          git clone -b ${{matrix.target}} https://github.com/canmengxian/12.git ${{matrix.target}}
+          git clone -b ${{matrix.target}} https://github.com/canmengxian/11.git ${{matrix.target}}
           cd ${{matrix.target}}
           rm -Rf *
           git rm --cache *
