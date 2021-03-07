@@ -1,0 +1,27 @@
+name: ci
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: download
+        run: |
+          git config --global user.name "残梦"
+          git config --global user.email canmengxian@qq.com
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git pull --rebase
+          git add
+          git commit -m "download"
+          git push
+
+      - name: 上传固件目录
+        uses: actions/upload-artifact@main
+        with:
+          name: lbst
+          path: ${{ github.workspace }}
+          
