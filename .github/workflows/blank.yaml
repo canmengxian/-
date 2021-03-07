@@ -1,27 +1,52 @@
 name: ci
 
-on: [ push, pull_request ]
+on:
+  repository_dispatch:
+  release:
+    types: published
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: 0 */12 * * *
+  watch:
+    types: started
 
 jobs:
   build:
     runs-on: ubuntu-20.04
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - name: Clone repository
+      - name: checkout
         uses: actions/checkout@v2
 
-      - name: download
+      - name: Initialization environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
-          git config --global user.name "残梦"
-          git config --global user.email canmengxian@qq.com
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --rebase
-          git add
-          git commit -m "download"
-          git push
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install git subversion git-core wget
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
-      - name: 上传固件目录
-        uses: actions/upload-artifact@main
-        with:
-          name: lbst
-          path: ${{ github.workspace }}
-          
+      - name: Clone packages
+        run: |
+          cd $GITHUB_WORKSPACE
+          chmod +x packages.sh
+          git clone https://github.com/canmengxian/12.git
+          cd 12
+          rm -Rf *
+          git rm --cache *
+          $GITHUB_WORKSPACE/packages.sh
+
+      - name: Upload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/packages
+          [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/packages
+          cd $GITHUB_WORKSPACE/packages
+          git add .
+          git commit -m "更新$(TZ='Asia/Shanghai' date +@%Y%m%d)"
+          git push --quiet "https://${{ secrets.TOKEN }}@github.com/canmengxian/12.git" HEAD:packages
