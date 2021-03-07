@@ -1,16 +1,11 @@
 name: ci
 
-on:
-  repository_dispatch:
-  release:
-    types: published
-  push:
-    branches:
-      - master
+	on:
+  workflow_dispatch:
   schedule:
-    - cron: 0 */12 * * *
+    - cron: "24 * * * *"
   watch:
-    types: started
+    types: [ started ]
 
 jobs:
   build:
