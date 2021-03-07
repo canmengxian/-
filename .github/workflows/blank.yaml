@@ -42,11 +42,11 @@ jobs:
 
       - name: Upload
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GB1_TOKEN }}
         run: |
           [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/packages
           [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/packages
           cd $GITHUB_WORKSPACE/packages
           git add .
           git commit -m "更新$(TZ='Asia/Shanghai' date +@%Y%m%d)"
-          git push --quiet "https://${{ secrets.TOKEN }}@github.com/canmengxian/12.git" HEAD:packages
+          git push --quiet "https://${{ secrets.GB1_TOKEN }}@github.com/canmengxian/12.git" HEAD:packages
