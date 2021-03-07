@@ -49,4 +49,4 @@ jobs:
           cd $GITHUB_WORKSPACE/${{matrix.target}}
           git add .
           git commit -m "更新$(TZ='Asia/Shanghai' date +@%Y%m%d)"
-          git push --quiet "https://${{ secrets.GB1_TOKEN }}@github.com/canmengxian/12.git" HEAD:${{matrix.target}}
+          git push --quiet "https://${{ secrets.GB1_TOKEN }}@github.com/canmengxian/11.git" HEAD:${{matrix.target}}
