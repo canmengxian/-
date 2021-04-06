@@ -62,10 +62,9 @@ jobs:
           git clone --depth 1 https://github.com/BCYDTZ/luci-app-UUGameAcc
           git clone --depth 1 https://github.com/garypang13/luci-app-eqos
           git clone --depth 1 https://github.com/riverscn/openwrt-iptvhelper.git 
-          svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome
+          svn co https://github.com/kenzok8/openwrt-packages/trunk/AdGuardHome
           svn co https://github.com/brvphoenix/wrtbwmon/trunk/wrtbwmon
           svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-airwhu
-
           mv -f my-packages/* ./
 
     - name: SSH connection to Actions
