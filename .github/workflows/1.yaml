@@ -43,7 +43,7 @@ jobs:
       run: |
           rm -rf `find -maxdepth 1 -type d -name "[!.]*" ! -path "./diy"`
           git rm -r --cache *
-          git clone --depth 1 https://github.com/gdck/luci-app-control-weburl.git
+          git clone --depth 1 https://github.com/gdck/luci-app-control-weburl.git &
           git clone --depth 1 https://github.com/sensec/luci-app-xlnetacc.git
           git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset.git
           git clone --depth 1 https://github.com/BoringCat/luci-app-mentohust
@@ -70,7 +70,7 @@ jobs:
           rm -f .gitattributes .gitignore
     - name: SSH connection to Actions
       uses: garypang13/debugger-action@master
-      if: 1 == 0
+      if: 1 == 1
 
     - name: Apply
       run: |
