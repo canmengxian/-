@@ -43,8 +43,9 @@ jobs:
       run: |
           cd $GITHUB_WORKSPACE
           chmod +x packages.sh
-#          rm -rf `find -maxdepth 1 -type d -name "[!.]*" ! -path "./diy"`
-#          git rm -r --cache *
+          $GITHUB_WORKSPACE/packages.sh
+          rm -rf `find -maxdepth 1 -type d -name "[!.]*" ! -path "./diy"`
+          git rm -r --cache *
 
     - name: SSH connection to Actions
       uses: garypang13/debugger-action@master
