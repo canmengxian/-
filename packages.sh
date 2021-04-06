@@ -9,7 +9,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-vssr.git
 git clone --depth 1 https://github.com/ysc3839/luci-proto-minieap.git
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced.git
 git clone --depth 1 https://github.com/jerrykuku/luci-app-jd-dailybonus.git
-git clone --depth 1 https://github.com/rufengsuixing/luci-app-syncdial   .git   
+git clone --depth 1 https://github.com/rufengsuixing/luci-app-syncdial.git   
 git clone --depth 1 https://github.com/sirpdboy/luci-app-netdata.git
 git clone --depth 1 https://github.com/sensec/ddns-scripts_aliyun.git
 git clone --depth 1 https://github.com/KumaTea/MentoHUST-SYSU-Guide.git
@@ -22,7 +22,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/AdGuardHome
 svn co https://github.com/brvphoenix/wrtbwmon/trunk/wrtbwmon
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-airwhu
 
-rm -rf ./*/.git
+#rm -rf ./*/.git
 rm -rf ./*/.svn 
 rm -f .gitattributes .gitignore
 exit 0
