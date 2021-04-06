@@ -65,7 +65,7 @@ jobs:
           svn co https://github.com/kenzok8/openwrt-packages/trunk/AdGuardHome
           svn co https://github.com/brvphoenix/wrtbwmon/trunk/wrtbwmon
           svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-airwhu
-          mv -f my-packages/* ./
+#          mv -f my-packages/* ./
 
     - name: SSH connection to Actions
       uses: garypang13/debugger-action@master
